@@ -13,7 +13,7 @@ namespace Sortirovka
 			int repeatCycle = 0;
 			do 
 			{
-				Console.WriteLine("vved razm mas");
+				Console.WriteLine("enter the size of the array");
 				sizeArray = Convert.ToInt32(Console.ReadLine());
 				CreateArray(sizeArray);
 				Console.WriteLine("for out press 1");
@@ -30,10 +30,10 @@ namespace Sortirovka
 				Array[i] = rand.Next(-sizeArray, sizeArray);
 			}
 
-			Console.WriteLine("Mas was created");
+			Console.WriteLine("Array was created");
 
 			PrintArray(Array);
-			Console.WriteLine("Mas was sorted");
+			Console.WriteLine("Array was sorted");
 			quickSort(Array, 0, Array.Length - 1);
 			PrintArray(Array);
 
