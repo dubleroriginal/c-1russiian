@@ -3,65 +3,76 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace Sortirovka {
-	class Program {
-		static void Main(string[] args) {
-			int sizeMas;
+namespace Sortirovka 
+{
+	class Program 
+	{
+		static void Main(string[] args) 
+		{
+			int sizeArray;
 			int repeatCycle = 0;
-			do {
+			do 
+			{
 				Console.WriteLine("vved razm mas");
-				sizeMas = Convert.ToInt32(Console.ReadLine());
-				CreateMas(sizeMas);
+				sizeArray = Convert.ToInt32(Console.ReadLine());
+				CreateArray(sizeArray);
 				Console.WriteLine("for out press 1");
 				repeatCycle = Convert.ToInt32(Console.ReadLine());
 				Console.Clear();
 			} while (repeatCycle != 1);
 		}
-		static void CreateMas(int razMas) {
+		static void CreateArray(int sizeArray) 
+		{
 			Random rand = new Random();
-			int[] Mas = new int[razMas];
-			for (int i = 0; i < Mas.Length; i++) {
-				Mas[i] = rand.Next(-razMas, razMas);
+			int[] Array = new int[sizeArray];
+			for (int i = 0; i < Array.Length; i++) 
+			{
+				Array[i] = rand.Next(-sizeArray, sizeArray);
 			}
 
 			Console.WriteLine("Mas was created");
 
-			PrintMas(Mas);
+			PrintArray(Array);
 			Console.WriteLine("Mas was sorted");
-			quickSort(Mas, 0, Mas.Length - 1);
-			PrintMas(Mas);
+			quickSort(Array, 0, Array.Length - 1);
+			PrintArray(Array);
 
 		}
-		static void PrintMas(int[] mas) {
-			for (int i = 0; i < mas.Length; i++) {
-				Console.Write(mas[i] + " ");
-				if (i == mas.Length - 1) Console.WriteLine(" ");
+		static void PrintArray(int[] Array) 
+		{
+			for (int i = 0; i < Array.Length; i++) 
+			{
+				Console.Write(Array[i] + " ");
+				if (i == Array.Length - 1) Console.WriteLine(" ");
 			}
 		}
 
 
 
-		static void quickSort(int[] mas, int left, int right) {
-			int prom;
-			int x = mas[left + (right - left) / 2];
+		static void quickSort(int[] Array, int left, int right) 
+		{
+			int intValue;
+			int x = Array[left + (right - left) / 2];
 
 			int i = left;
 			int j = right;
 
-			while (i <= j) {
-				while (mas[i] < x) i++;
-				while (mas[j] > x) j--;
-				if (i <= j) {
-					prom = mas[i];
-					mas[i] = mas[j];
-					mas[j] = prom;
+			while (i <= j) 
+			{
+				while (Array[i] < x) i++;
+				while (Array[j] > x) j--;
+				if (i <= j) 
+				{
+					intValue = Array[i];
+					Array[i] = Array[j];
+					Array[j] = intValue;
 					i++;
 					j--;
 				}
 			}
-			if (i < right) quickSort(mas, i, right);
+			if (i < right) quickSort(Array, i, right);
 
-			if (left < j) quickSort(mas, left, j);
+			if (left < j) quickSort(Array, left, j);
 		}
 	}
 }
